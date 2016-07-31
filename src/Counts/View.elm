@@ -1,12 +1,9 @@
-module View.Counts exposing (..)
+module Counts.View exposing (..)
 
 import Html exposing (..)
 
-type alias Model =
-  List Int
-
-type alias Msg =
-  ()
+import Counts.Model exposing (Model)
+import Counts.Update exposing (Msg)
 
 view : Model -> Html Msg
 view xs =
