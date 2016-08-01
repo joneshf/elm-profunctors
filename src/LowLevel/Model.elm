@@ -2,17 +2,17 @@ module LowLevel.Model exposing (..)
 
 import Button.Model as Button
 
-import Counts.Model as Counts
+import Count.Model as Count
 
 type alias Model =
   { firstButton : Button.Model
-  , counts : Counts.Model
+  , count : Count.Model
   , secondButton : Button.Model
   }
 
-model : Model
-model =
-  { firstButton = Button.model
-  , counts = Counts.model
-  , secondButton = Button.model
+model : String -> Int -> String -> Model
+model first count second =
+  { firstButton = Button.model first
+  , count = Count.model count
+  , secondButton = Button.model second
   }

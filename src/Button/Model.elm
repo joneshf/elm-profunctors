@@ -3,6 +3,6 @@ module Button.Model exposing (..)
 type alias Model =
   String
 
-model : Model
-model =
-  ""
+model : String -> Model
+model str =
+  str

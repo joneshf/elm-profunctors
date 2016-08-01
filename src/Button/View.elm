@@ -1,12 +1,12 @@
 module Button.View exposing (..)
 
 import Html exposing (..)
+import Html.Events exposing (..)
 
 import Button.Model exposing (Model)
-import Button.Update exposing (Msg)
 
-view : Model -> Html Msg
-view str =
+view : a -> Model -> Html a
+view modification str =
   button
-    []
+    [onClick modification]
     [text str]

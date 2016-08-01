@@ -3,17 +3,16 @@ module LowLevel.Update exposing (..)
 import LowLevel.Model exposing (Model)
 
 import Button.Update as Button
-import Counts.Update as Counts
+import Count.Model as Count
+import Count.Update as Count
 
 type alias Msg =
-  Result Button.Msg (Result Counts.Msg Button.Msg)
+  Count.Msg Count.Model Count.Model
 
 update : Msg -> Model -> Model
 update msg model =
-  case msg of
-    Err msg ->
-      {model | firstButton = Button.update msg model.firstButton}
-    Ok (Err msg) ->
-      {model | counts = Counts.update msg model.counts}
-    Ok (Ok msg) ->
-      {model | secondButton = Button.update msg model.secondButton}
+  { model
+  | firstButton = Button.update msg model.firstButton
+  , count = Count.update msg model.count
+  , secondButton = Button.update msg model.secondButton
+  }

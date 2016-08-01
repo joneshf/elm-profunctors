@@ -7,11 +7,11 @@ import Button.Model exposing (..)
 import Button.Update exposing (..)
 import Button.View exposing (..)
 
-beginnerProgram : {model : Model, update : Msg -> Model -> Model, view : Model -> Html.Html Msg}
+beginnerProgram : {model : Model, update : a -> Model -> Model, view : Model -> Html.Html ()}
 beginnerProgram =
-  { model = model
+  { model = model ""
   , update = update
-  , view = view
+  , view = view ()
   }
 
 main : Program Never
