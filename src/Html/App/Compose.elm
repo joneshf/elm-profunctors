@@ -11,16 +11,28 @@ type alias BeginnerProgram model msg =
   }
 
 model : b -> {r | model : a} -> {r | model : b}
-model x record =
-  {record | model = x}
+model x =
+  modelMap (always x)
+
+modelMap : (a -> b) -> {r | model : a} -> {r | model : b}
+modelMap f record =
+  {record | model = f record.model}
 
 update : b -> {r | update : a} -> {r | update : b}
-update x record =
-  {record | update = x}
+update x =
+  updateMap (always x)
+
+updateMap : (a -> b) -> {r | update : a} -> {r | update : b}
+updateMap f record =
+  {record | update = f record.update}
 
 view : b -> {r | view : a} -> {r | view : b}
-view x record =
-  {record | view = x}
+view x =
+  viewMap (always x)
+
+viewMap : (a -> b) -> {r | view : a} -> {r | view : b}
+viewMap f record =
+  {record | view = f record.view}
 
 below : BeginnerProgram a b -> BeginnerProgram c d -> BeginnerProgram (a, c) (Result b d)
 below first second =
