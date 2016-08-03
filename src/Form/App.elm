@@ -14,7 +14,7 @@ main : Program Never
 main =
   Name.beginnerProgram
     |> before passwords
-    |> usingOk shareMsgAbove Validation.beginnerProgram
+    |> usingOk (shareMsg above) Validation.beginnerProgram
     |> App.beginnerProgram
 
 passwords : BeginnerProgram (Password.Model String, Password.Model String) (Result Password.Msg Password.Msg)
