@@ -1,4 +1,4 @@
-module Button.Model exposing (..)
+module Buttons.Button.Model exposing (..)
 
 type alias Model a =
   { label : String

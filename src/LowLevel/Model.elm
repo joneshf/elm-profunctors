@@ -1,8 +1,8 @@
 module LowLevel.Model exposing (..)
 
-import Button.Model as Button
+import Buttons.Button.Model as Button
 
-import Count.Model as Count
+import Buttons.Count.Model as Count
 
 type alias Model =
   { firstButton : Button.Model (Int -> Int)

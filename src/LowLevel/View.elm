@@ -5,8 +5,8 @@ import Html
 import LowLevel.Model exposing (Model)
 import LowLevel.Update exposing (Msg)
 
-import Button.View as Button
-import Count.View as Count
+import Buttons.Button.View as Button
+import Buttons.Count.View as Count
 
 view : Model -> Html.Html Msg
 view model =

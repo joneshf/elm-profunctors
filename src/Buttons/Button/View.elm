@@ -1,9 +1,9 @@
-module Button.View exposing (..)
+module Buttons.Button.View exposing (..)
 
 import Html exposing (..)
 import Html.Events exposing (..)
 
-import Button.Model exposing (Model)
+import Buttons.Button.Model exposing (Model)
 
 view : Model a -> Html a
 view {label, msg} =

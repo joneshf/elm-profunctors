@@ -1,8 +1,8 @@
-module Count.View exposing (..)
+module Buttons.Count.View exposing (..)
 
 import Html exposing (..)
 
-import Count.Model exposing (Model)
+import Buttons.Count.Model exposing (Model)
 
 view : Model -> Html.Html a
 view model =

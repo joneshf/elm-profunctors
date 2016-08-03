@@ -1,4 +1,4 @@
-module Count.Model exposing (..)
+module Buttons.Count.Model exposing (..)
 
 type alias Model =
   Int

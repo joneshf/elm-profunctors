@@ -2,9 +2,9 @@ module Buttons.App exposing (..)
 
 import Html.App
 
-import Button.App as Button
-import Button.Model as Button
-import Count.App as Count
+import Buttons.Button.App as Button
+import Buttons.Button.Model as Button
+import Buttons.Count.App as Count
 
 import HighLevel.Compose exposing (..)
 

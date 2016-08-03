@@ -1,4 +1,4 @@
-module Count.Update exposing (..)
+module Buttons.Count.Update exposing (..)
 
 type alias Msg a b =
   a -> b

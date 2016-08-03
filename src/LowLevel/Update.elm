@@ -2,9 +2,9 @@ module LowLevel.Update exposing (..)
 
 import LowLevel.Model exposing (Model)
 
-import Button.Update as Button
-import Count.Model as Count
-import Count.Update as Count
+import Buttons.Button.Update as Button
+import Buttons.Count.Model as Count
+import Buttons.Count.Update as Count
 
 type alias Msg =
   Count.Msg Count.Model Count.Model

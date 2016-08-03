@@ -1,11 +1,11 @@
-module Count.App exposing (..)
+module Buttons.Count.App exposing (..)
 
 import Html
 import Html.App
 
-import Count.Model exposing (..)
-import Count.Update exposing (..)
-import Count.View exposing (..)
+import Buttons.Count.Model exposing (..)
+import Buttons.Count.Update exposing (..)
+import Buttons.Count.View exposing (..)
 
 beginnerProgram : {model : Model, update : Msg Model Model -> Model -> Model, view : Model -> Html.Html a}
 beginnerProgram =
