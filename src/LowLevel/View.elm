@@ -12,7 +12,7 @@ view : Model -> Html.Html Msg
 view model =
   Html.div
     []
-    [ (Button.view (\x -> x - 1) << .firstButton) model
+    [ (Button.view << .firstButton) model
     , (Count.view << .count) model
-    , (Button.view (\x -> x + 1) << .secondButton) model
+    , (Button.view << .secondButton) model
     ]

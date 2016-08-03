@@ -5,8 +5,8 @@ import Html.Events exposing (..)
 
 import Button.Model exposing (Model)
 
-view : a -> Model -> Html a
-view modification str =
+view : Model a -> Html a
+view {label, msg} =
   button
-    [onClick modification]
-    [text str]
+    [onClick msg]
+    [text label]

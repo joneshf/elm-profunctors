@@ -5,14 +5,14 @@ import Button.Model as Button
 import Count.Model as Count
 
 type alias Model =
-  { firstButton : Button.Model
+  { firstButton : Button.Model (Int -> Int)
   , count : Count.Model
-  , secondButton : Button.Model
+  , secondButton : Button.Model (Int -> Int)
   }
 
 model : String -> Int -> String -> Model
 model first count second =
-  { firstButton = Button.model first
+  { firstButton = Button.model first (\x -> x + 1)
   , count = Count.model count
-  , secondButton = Button.model second
+  , secondButton = Button.model second (\x -> x + 1)
   }
