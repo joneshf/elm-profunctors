@@ -6,7 +6,7 @@ import Buttons.Button.App as Button
 import Buttons.Button.Model as Button
 import Buttons.Count.App as Count
 
-import HighLevel.Compose exposing (..)
+import Html.App.Compose exposing (..)
 
 main : Program Never
 main =

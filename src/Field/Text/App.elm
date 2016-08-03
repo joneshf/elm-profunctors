@@ -6,7 +6,7 @@ import Field.Text.Model exposing (..)
 import Field.Text.Update exposing (..)
 import Field.Text.View exposing (..)
 
-import HighLevel.Compose exposing (BeginnerProgram)
+import Html.App.Compose exposing (BeginnerProgram)
 
 beginnerProgram : BeginnerProgram Model Model
 beginnerProgram =

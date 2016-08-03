@@ -1,4 +1,4 @@
-module HighLevel.Compose exposing (..)
+module Html.App.Compose exposing (..)
 
 import Html
 import Html.App

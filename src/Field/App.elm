@@ -2,7 +2,7 @@ module Field.App exposing (..)
 
 import Html.App
 
-import HighLevel.Compose exposing (..)
+import Html.App.Compose exposing (..)
 
 import Field.Reverse.App as Reverse
 import Field.Text.App as Text

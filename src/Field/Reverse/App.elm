@@ -6,7 +6,7 @@ import Field.Reverse.Model exposing (..)
 import Field.Reverse.Update exposing (..)
 import Field.Reverse.View exposing (..)
 
-import HighLevel.Compose exposing (BeginnerProgram)
+import Html.App.Compose exposing (BeginnerProgram)
 
 beginnerProgram : BeginnerProgram Model Msg
 beginnerProgram =
