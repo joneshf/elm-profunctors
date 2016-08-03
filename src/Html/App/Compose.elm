@@ -4,11 +4,16 @@ import Html
 import Html.App
 import Html.Attributes as Attributes
 
+import Result.Extra exposing (mapBoth)
+
 type alias BeginnerProgram model msg =
   { model : model
-  , view : model -> Html.Html msg
   , update : msg -> model -> model
+  , view : model -> Html.Html msg
   }
+
+type alias Composition model1 msg1 model2 msg2 model msg =
+  BeginnerProgram model1 msg1 -> BeginnerProgram model2 msg2 -> BeginnerProgram model msg
 
 model : b -> {r | model : a} -> {r | model : b}
 model x =
@@ -87,3 +92,12 @@ shareMsgBelow first second =
 shareMsgAbove : BeginnerProgram c b -> BeginnerProgram a b -> BeginnerProgram (a, c) b
 shareMsgAbove second first =
   shareMsgBelow first second
+
+usingOk
+  :  Composition a (Result b c) d (Result b c) e (Result b c)
+  -> Composition a           c  d (Result b c) e (Result b c)
+usingOk composition program =
+  program
+    |> viewMap ((<<) (Html.App.map Ok))
+    |> updateMap (mapBoth (always identity))
+    |> composition
