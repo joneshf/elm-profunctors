@@ -1,4 +1,4 @@
-module HighLevel.App exposing (..)
+module Buttons.App exposing (..)
 
 import Html.App
 
