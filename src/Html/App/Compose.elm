@@ -77,32 +77,22 @@ before : Composition c d a b (a, c) (Result b d)
 before right left =
   after left right
 
-shareMsg :  Composition a b c b d (Result b b) -> Composition a b c b d b
+shareMsg :  Composition a b c b (a, c) (Result b b) -> Composition a b c b (a, c) b
 shareMsg composition first second =
-  let
-    {model, update, view} =
-      composition first second
-  in
-    { model = model
-    , update = update << Ok
-    , view = Html.App.map (mapBoth identity identity) << view
-    }
+  composition first second
+    |> update (\msg (firstModel, secondModel) ->
+        (first.update msg firstModel, second.update msg secondModel)
+      )
+    |> viewMap ((<<) (Html.App.map (mapBoth identity identity)))
 
-shareMsgBelow : Composition a b c b (a, c) b
-shareMsgBelow first second =
-  { model = (first.model, second.model)
-  , view = \(firstModel, secondModel) ->
-      Html.div []
-        [ first.view firstModel
-        , second.view secondModel
-        ]
-  , update = \msg (firstModel, secondModel) ->
-      (first.update msg firstModel, second.update msg secondModel)
-  }
-
-shareMsgAbove : Composition c b a b (a, c) b
-shareMsgAbove second first =
-  shareMsgBelow first second
+usingErr
+  :  Composition a (Result b c) d (Result b c) e (Result b c)
+  -> Composition a         b    d (Result b c) e (Result b c)
+usingErr composition program =
+  program
+    |> viewMap ((<<) (Html.App.map Err))
+    |> updateMap (flip mapBoth (always identity))
+    |> composition
 
 usingOk
   :  Composition a (Result b c) d (Result b c) e (Result b c)
