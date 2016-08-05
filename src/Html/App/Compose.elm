@@ -43,7 +43,10 @@ below : Composition a b c d (a, c) (Result b d)
 below first second =
   { model = (first.model, second.model)
   , view = \(firstModel, secondModel) ->
-      Html.div []
+      Html.div
+        [ Attributes.style
+            [("display", "flex"), ("flex-direction", "column")]
+        ]
         [ Html.App.map Err (first.view firstModel)
         , Html.App.map Ok (second.view secondModel)
         ]
