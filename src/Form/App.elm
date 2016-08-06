@@ -20,4 +20,5 @@ main =
 passwords : BeginnerProgram (Password.Model String, Password.Model String) (Result Password.Msg Password.Msg)
 passwords =
   (Password.beginnerProgram |> view (Password.view "Password"))
-    |> before (Password.beginnerProgram |> view (Password.view "Re-enter Password"))
+    |> before
+      (Password.beginnerProgram |> view (Password.view "Re-enter Password"))

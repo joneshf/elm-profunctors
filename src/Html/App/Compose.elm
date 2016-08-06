@@ -80,13 +80,21 @@ before : Composition c d a b (a, c) (Result b d)
 before right left =
   after left right
 
-shareMsg :  Composition a b c b (a, c) (Result b b) -> Composition a b c b (a, c) b
-shareMsg composition first second =
-  composition first second
+shareMsg
+  :  Composition c b a b (a, c) (Result b b)
+  -> Composition c b a b (a, c) b
+shareMsg composition second first =
+  composition second first
     |> update (\msg (firstModel, secondModel) ->
         (first.update msg firstModel, second.update msg secondModel)
       )
     |> viewMap ((<<) (Html.App.map (mapBoth identity identity)))
+
+shareMsg'
+  :  Composition a b c b (a, c) (Result b b)
+  -> Composition a b c b (a, c) b
+shareMsg' composition first second =
+  shareMsg (flip composition) second first
 
 usingErr
   :  Composition a (Result b c) d (Result b c) e (Result b c)
