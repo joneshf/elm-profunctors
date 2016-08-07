@@ -27,18 +27,31 @@ checkboxes
         (Result (Checkbox.Msg String) (Checkbox.Msg String))
         (Checkbox.Msg String))
 checkboxes =
-  (Checkbox.beginnerProgram |> view (Checkbox.view "color" "red"))
-    |> above
-      (Checkbox.beginnerProgram
-        |> view (Checkbox.view "text-decoration" "underline"))
-    |> above
-      (Checkbox.beginnerProgram
-        |> view (Checkbox.view "font-weight" "bold"))
+  let
+    checkboxProgram =
+      Checkbox.beginnerProgram
+  in
+    { checkboxProgram
+    | view = Checkbox.view "color" "red"
+    }
+      |> above
+        { checkboxProgram
+        | view = Checkbox.view "text-decoration" "underline"
+        }
+      |> above
+        { checkboxProgram
+        | view = Checkbox.view "font-weight" "bold"
+        }
 
 styled
   : BeginnerProgram
       Styled.Model
       (Result (Result Styled.Msg Styled.Msg) Styled.Msg)
 styled =
-  Styled.beginnerProgram
-    |> updateMap ((>>) (mapBoth (mapBoth identity identity) identity))
+  let
+    styledProgram =
+      Styled.beginnerProgram
+  in
+    { styledProgram
+    | update = Styled.update << mapBoth (mapBoth identity identity) identity
+    }

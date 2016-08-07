@@ -27,22 +27,34 @@ radioButtons
         (Result (RadioButton.Msg String String) (RadioButton.Msg String String))
         (RadioButton.Msg String String))
 radioButtons =
-  (RadioButton.beginnerProgram
-    |> view (RadioButton.view "color" "red")
-    |> model (RadioButton.model "style"))
-    |> above
-      (RadioButton.beginnerProgram
-        |> view (RadioButton.view "text-decoration" "underline")
-        |> model (RadioButton.model "style"))
-    |> above
-      (RadioButton.beginnerProgram
-        |> view (RadioButton.view "font-weight" "bold")
-        |> model (RadioButton.model "style"))
+  let
+    radioProgram =
+      RadioButton.beginnerProgram
+  in
+    { radioProgram
+    | view = RadioButton.view "color" "red"
+    , model = RadioButton.model "style"
+    }
+      |> above
+        { radioProgram
+        | view = RadioButton.view "text-decoration" "underline"
+        , model = RadioButton.model "style"
+        }
+      |> above
+        { radioProgram
+        | view = RadioButton.view "font-weight" "bold"
+        , model = RadioButton.model "style"
+        }
 
 styled
   : BeginnerProgram
       Styled.Model
       (Result (Result Styled.Msg Styled.Msg) Styled.Msg)
 styled =
-  Styled.beginnerProgram
-    |> updateMap ((>>) (mapBoth (mapBoth identity identity) identity))
+  let
+    styledProgram =
+      Styled.beginnerProgram
+  in
+    { styledProgram
+    | update = Styled.update << mapBoth (mapBoth identity identity) identity
+    }
