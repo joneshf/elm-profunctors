@@ -7,6 +7,8 @@ import Buttons.Button.Model exposing (Model)
 
 view : Model a -> Html a
 view {label, msg} =
-  button
-    [onClick msg]
-    [text label]
+  div []
+    [ button
+        [onClick msg]
+        [text label]
+    ]

@@ -12,7 +12,7 @@ type alias Model =
 
 model : String -> Int -> String -> Model
 model first count second =
-  { firstButton = Button.model first (\x -> x + 1)
+  { firstButton = Button.model first (\x -> x - 1)
   , count = Count.model count
   , secondButton = Button.model second (\x -> x + 1)
   }

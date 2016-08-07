@@ -10,5 +10,5 @@ import Field.Text.App as Text
 main : Program Never
 main =
   Reverse.beginnerProgram
-    |> shareMsgAbove Text.beginnerProgram
+    |> shareMsg above Text.beginnerProgram
     |> Html.App.beginnerProgram

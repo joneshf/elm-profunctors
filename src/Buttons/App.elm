@@ -11,8 +11,8 @@ import Html.App.Compose exposing (..)
 main : Program Never
 main =
   decrementButton
-    |> shareMsgAbove Count.beginnerProgram
-    |> shareMsgAbove incrementButton
+    |> shareMsg above Count.beginnerProgram
+    |> shareMsg above incrementButton
     |> Html.App.beginnerProgram
 
 incrementButton : BeginnerProgram (Button.Model (number -> number)) (number -> number)
